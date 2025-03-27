@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 export default function NextSection() {
   return (
     <section
+      id="exploration-section"
       className="relative w-full max-w-full overflow-hidden py-16 px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col items-center text-center"
       style={{
         background: "linear-gradient(135deg, #FFE4B5, #FFFACD)", // Lighter gradient colors
