@@ -35,7 +35,6 @@ export default function Navbar() {
 
   return (
     <>
-      <Herosection />
       <motion.nav
         className="fixed top-0 w-full bg-white shadow-md z-50"
         initial={{ y: -100 }}
