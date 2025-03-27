@@ -39,8 +39,6 @@ export default function Navbar() {
 
   return (
     <>
-      <Herosection />
-
       {/* Navbar Container */}
       <motion.nav
         className={clsx(
@@ -51,10 +49,10 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100 }}
       >
-        <div className="flex justify-between items-center max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> {/* Adjusted padding for better responsiveness */}
           {/* Logo */}
           <motion.h1
-            className="text-2xl font-bold cursor-pointer tracking-wide text-gray-700" // Changed from text-gray-900 to text-gray-700
+            className="text-xl sm:text-2xl font-bold cursor-pointer tracking-wide text-gray-700" // Adjusted font size for smaller screens
             whileHover={{ scale: 1.1, rotate: 3 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -62,11 +60,11 @@ export default function Navbar() {
           </motion.h1>
 
           {/* Filters for Desktop */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden lg:flex space-x-4 xl:space-x-6"> {/* Adjusted spacing for larger screens */}
             {filters.map((filter) => (
               <motion.div key={filter.name} className="relative group">
                 <button
-                  className="flex items-center space-x-2 text-gray-700 font-semibold transition-colors duration-300 hover:text-orange-600" // Changed from text-gray-800 to text-gray-700
+                  className="flex items-center space-x-2 text-gray-700 font-semibold transition-colors duration-300 hover:text-orange-600"
                   onClick={() => handleDropdownToggle(filter.name)}
                 >
                   {filter.name}
@@ -103,7 +101,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={toggleMenu} className="md:hidden">
+          <button onClick={toggleMenu} className="lg:hidden"> {/* Show only on smaller screens */}
             {isOpen ? <X size={28} className="text-gray-900" /> : <Menu size={28} className="text-gray-900" />}
           </button>
         </div>
@@ -113,7 +111,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-full h-screen bg-white shadow-lg z-50 flex flex-col items-center justify-center"
+            className="fixed top-0 left-0 w-full h-screen bg-white shadow-lg z-50 flex flex-col items-center justify-center px-4 sm:px-6" // Added padding for smaller screens
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -125,7 +123,7 @@ export default function Navbar() {
             </button>
 
             {/* Mobile Filters */}
-            <div className="flex flex-col space-y-6 text-lg font-semibold text-gray-700"> {/* Changed from text-gray-800 to text-gray-700 */}
+            <div className="flex flex-col space-y-4 sm:space-y-6 text-lg font-semibold text-gray-700"> {/* Adjusted spacing */}
               {filters.map((filter) => (
                 <motion.div key={filter.name} className="relative">
                   <button
@@ -136,7 +134,7 @@ export default function Navbar() {
                     <ChevronDown size={20} />
                   </button>
                   {openDropdown === filter.name && (
-                    <ul className="mt-2 space-y-3 text-center bg-gradient-to-r from-orange-100 via-white to-orange-100 shadow-xl rounded-lg p-2 border border-orange-200"> {/* Added gradient background, shadow, and border */}
+                    <ul className="mt-2 space-y-2 sm:space-y-3 text-center bg-gradient-to-r from-orange-100 via-white to-orange-100 shadow-xl rounded-lg p-2 border border-orange-200"> {/* Added gradient background, shadow, and border */}
                       {filter.options.map((option) => (
                         <motion.li
                           key={option}
