@@ -80,7 +80,7 @@ export default function Navbar() {
                 <AnimatePresence>
                   {openDropdown === filter.name && (
                     <motion.ul
-                      className="absolute top-full left-0 mt-2 w-40 bg-white shadow-lg rounded-lg p-2"
+                      className="absolute top-full left-0 mt-2 w-48 bg-gradient-to-r from-orange-100 via-white to-orange-100 shadow-xl rounded-lg p-2 border border-orange-200" // Added gradient background, shadow, and border
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
@@ -88,7 +88,7 @@ export default function Navbar() {
                       {filter.options.map((option) => (
                         <motion.li
                           key={option}
-                          className="cursor-pointer p-2 text-sm hover:bg-orange-100 rounded-lg transition duration-300"
+                          className="cursor-pointer p-2 text-sm text-gray-700 hover:bg-orange-200 hover:text-orange-700 rounded-lg transition duration-300" // Improved hover effect
                           whileHover={{ scale: 1.05 }}
                           onClick={() => handleFilterChange(filter.name, option)}
                         >
@@ -129,18 +129,18 @@ export default function Navbar() {
               {filters.map((filter) => (
                 <motion.div key={filter.name} className="relative">
                   <button
-                    className="flex items-center space-x-2 text-xl font-semibold text-gray-700" // Changed from text-gray-800 to text-gray-700
+                    className="flex items-center space-x-2 text-xl font-semibold text-gray-700 hover:text-orange-600"
                     onClick={() => handleDropdownToggle(filter.name)}
                   >
                     {filter.name}
                     <ChevronDown size={20} />
                   </button>
                   {openDropdown === filter.name && (
-                    <ul className="mt-2 space-y-3 text-center">
+                    <ul className="mt-2 space-y-3 text-center bg-gradient-to-r from-orange-100 via-white to-orange-100 shadow-xl rounded-lg p-2 border border-orange-200"> {/* Added gradient background, shadow, and border */}
                       {filter.options.map((option) => (
                         <motion.li
                           key={option}
-                          className="cursor-pointer text-lg hover:text-orange-600 transition duration-300"
+                          className="cursor-pointer text-lg text-gray-700 hover:bg-orange-200 hover:text-orange-700 rounded-lg transition duration-300" // Improved hover effect
                           whileHover={{ scale: 1.1 }}
                           onClick={() => handleFilterChange(filter.name, option)}
                         >
