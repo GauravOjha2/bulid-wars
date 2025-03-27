@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function TemplesDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const temples = ["Kashi Vishwanath", "Golden Temple", "Meenakshi Temple"];
+  const temples = [
+    { name: "Kashi Vishwanath", link: "/temples/kashi-vishwanath" },
+    { name: "Golden Temple", link: "/temples/golden-temple" },
+    { name: "Meenakshi Temple", link: "/temples/meenakshi-temple" },
+  ];
 
   return (
     <div className="relative">
@@ -27,7 +32,9 @@ export default function TemplesDropdown() {
               key={index}
               className="px-4 py-2 text-gray-700 hover:bg-orange-100 cursor-pointer"
             >
-              {temple}
+              <Link to={temple.link} className="hover:text-orange-600 transition">
+                {temple.name}
+              </Link>
             </li>
           ))}
         </motion.ul>

@@ -7,9 +7,14 @@ import { Link } from "react-router-dom";
 
 export default function NavLinks({ isMobile }) {
   const [isFestivalsOpen, setIsFestivalsOpen] = useState(false);
+  const [isTemplesOpen, setIsTemplesOpen] = useState(false); // Added state for TemplesDropdown
 
   const toggleFestivalsDropdown = () => {
     setIsFestivalsOpen((prev) => !prev);
+  };
+
+  const toggleTemplesDropdown = () => {
+    setIsTemplesOpen((prev) => !prev); // Toggle function for TemplesDropdown
   };
 
   return (
@@ -26,7 +31,15 @@ export default function NavLinks({ isMobile }) {
         </button>
         {isFestivalsOpen}
       </li>
-      <TemplesDropdown />
+      <li className="relative">
+        <button
+          onClick={toggleTemplesDropdown}
+          className="hover:text-orange-600 transition mb-2"
+        >
+          <TemplesDropdown />
+        </button>
+        {isTemplesOpen}
+      </li>
       <RitualsDropdown />
       <CalendarDropdown />
     </ul>
